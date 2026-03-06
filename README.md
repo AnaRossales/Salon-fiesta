@@ -1,4 +1,4 @@
-# Sistema de Gestión de Salón de Fiestas (DW-PIA)
+# Sistema de Gestión de Salón de Fiestas 
 
 Este proyecto consiste en una aplicación web robusta desarrollada con el framework **Django**, diseñada para digitalizar la administración de un salón de eventos, permitiendo el control de reservaciones, usuarios y catálogos.
 
