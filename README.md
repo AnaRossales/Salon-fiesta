@@ -7,7 +7,7 @@ Sigue estos pasos para replicar el entorno en tu computadora:
 
 ### 1. Clonar el proyecto
 ```bash
-git clone [https://github.com/FrancoLoera/DW-PIA.git](https://github.com/FrancoLoera/DW-PIA.git)
+git clone [[https://github.com/FrancoLoera/DW-PIA.git](https://github.com/FrancoLoera/DW-PIA.git](https://github.com/AnaRossales/Salon-fiesta.git))
 cd DW-PIA
 ```
 
