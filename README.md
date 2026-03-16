@@ -52,6 +52,7 @@ python manage.py runserver
 Luego, abre tu navegador en: http://127.0.0.1:8000/
 
  Estructura del Proyecto
+ 
 -salon_fiestas/: Carpeta de configuración global (settings, urls, wsgi).
 
 -apps/: Contiene la lógica dividida por módulos (Usuarios, Reservaciones, Salones).
