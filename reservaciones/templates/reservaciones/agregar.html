@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'reservaciones/css/agregar.css' %}">
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <img src="{% static 'reservaciones/img/LOGO.png' %}" alt="Logo" style="height:70px; margin-bottom:10px;">
+        <h2>Añadir Reservación</h2>
+    </div>
+
+    <form method="POST" novalidate>
+        {% csrf_token %}
+
+        <!-- Nombre -->
+        <label for="nombreCliente">Nombre del cliente:</label>
+        <input type="text" name="nombreCliente" id="nombreCliente" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" maxlength="100"
+            autocomplete="off" title="El nombre solo puede contener letras y espacios." required>
+        {% if errores.nombreCliente %}
+        <small style="color:red;">{{ errores.nombreCliente }}</small>
+        {% endif %}
+
+        <!-- Teléfono -->
+        <label for="telefono">Teléfono:</label>
+        <input type="text" name="telefono" id="telefono" pattern="[0-9]{10}" maxlength="10" autocomplete="off"
+            title="El teléfono debe tener exactamente 10 dígitos y solo números."
+            oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)" required>
+        {% if errores.telefono %}
+        <small style="color:red;">{{ errores.telefono }}</small>
+        {% endif %}
+
+        <!-- Fecha del evento -->
+        <label for="fechaEvento">Fecha del evento:</label>
+        <input type="date" name="fechaEvento" id="fechaEvento" title="Selecciona una fecha válida para el evento."
+            required>
+        {% if errores.fechaEvento %}
+        <small style="color:red;">{{ errores.fechaEvento }}<br></small>
+        {% endif %}
+
+        <!-- Número de invitados -->
+        <label for="numInvitados">Número de invitados:</label>
+        <input type="number" name="numInvitados" id="numInvitados" min="1" max="50" autocomplete="off"
+            title="El número de invitados debe ser entre 1 y 50." required>
+
+        <!-- Tipo de evento -->
+        <label for="tipoEvento">Tipo de evento:</label>
+        <select name="tipoEvento" id="tipoEvento" required>
+            <option value="">Selecciona una opción</option>
+            {% for evento in tipos_evento %}
+            <option value="{{ evento.id }}">{{ evento.nombre }}</option>
+            {% endfor %}
+        </select>
+        {% if errores.tipoEvento %}
+        <small style="color:red;">{{ errores.tipoEvento }}</small>
+        {% endif %}
+
+        <!-- Estatus -->
+        <label for="estatus">Estatus:</label>
+        <select name="estatus" id="estatus">
+            <option value="pendiente">Pendiente</option>
+            <option value="confirmada">Confirmada</option>
+            <option value="realizada">Realizada</option>
+        </select>
+
+        <div class="text-center mt-4">
+            <button type="submit">Guardar reservación</button>
+            <a href="{% url 'gestion_admin' %}" class="btn btn-regresar ms-2">
+                <i class="bi bi-x-circle"></i> Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}
